@@ -31,8 +31,12 @@ const AuthService = {
         return response.json();
     },
     getAuthToken: () => {
-        // Obtiene el token de localStorage
-        return localStorage.getItem("token");
+        if (typeof localStorage !== "undefined") {
+            return localStorage.getItem("token");
+        } else {
+            console.error("localStorage is not available in this environment");
+            return null;
+        }
     },
     logout: () => {
         localStorage.removeItem("token");

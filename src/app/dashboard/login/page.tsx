@@ -13,6 +13,7 @@ export default function login() {
             console.log("Usuario autenticado:", user);
             console.log("Token:", token);
             localStorage.setItem("token", token);
+            window.location.replace("/dashboard");
         } catch (error) {
             console.error("Error de autenticación:", error);
         }

@@ -3,6 +3,8 @@ import Table from "../components/Table/Table";
 import getAllBooks from "@/app/lib/getAllBooks";
 import Link from "next/link";
 import AuthenticatedRoute from "../components/authRoute/authRoute";
+import AuthService from "../lib/authUser";
+import LogOutButton from "../components/LogOutButton/LogOutButton";
 
 export default async function Dashboard() {
     const dataBook: Promise<IBook[]> = getAllBooks();
@@ -36,6 +38,7 @@ export default async function Dashboard() {
                         rows={books}
                         tableTitle="Todos los libros"
                     />
+                    <LogOutButton />
                 </div>
             </div>
         </AuthenticatedRoute>
