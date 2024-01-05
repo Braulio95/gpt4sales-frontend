@@ -29,7 +29,7 @@ Sipnosis: Tercera parte de el señor de los anillos
 Portada o cover: https://m.media-amazon.com/images/I/71tDovoHA+L._AC_UF894,1000_QL80_.jpg
 
 Con esta información puedes agregar los libros que desees. Al agregarlos la tabla se debería actualizar:
-![Registro exitoso](https://tinypic.host/image/6qRPM)
+(https://tinypic.host/image/6qRPM)
 
 De la misma forma podrias ver el nuevo registro en el HomePage
 ![Registro exitoso en el home](https://tinypic.host/image/6qjMk)
