@@ -1,9 +1,19 @@
+"use client";
 import React from "react";
 import EditIcon from "../../assets/icons/EditIcon";
 import DeleteIcon from "../../assets/icons/DeleteIcon";
 import "./Table.css";
+import Link from "next/link";
+import deleteBook from "@/app/lib/deleteBook";
 
 const Table = ({ tableTitle, headers, rows }: ITableProps) => {
+    const handleDelete = async (id: string) => {
+        try {
+            await deleteBook(id);
+        } catch (error) {
+            console.error("Error al eliminar el libro");
+        }
+    };
     return (
         <div>
             <h3>{tableTitle}</h3>
@@ -27,19 +37,23 @@ const Table = ({ tableTitle, headers, rows }: ITableProps) => {
                         >
                             {Object.entries(item).map(([key, value], index) => (
                                 <td key={index}>
-                                    {key === "password"
-                                        ? "*********"
-                                        : value.length > 10
+                                    {value.length > 10
                                         ? `${value.slice(0, 10)}...`
                                         : value}
                                 </td>
                             ))}
                             <td>
-                                <button>
-                                    <EditIcon />
-                                </button>{" "}
+                                <Link href={`/dashboard/${item.id}`}>
+                                    <button>
+                                        <EditIcon />
+                                    </button>
+                                </Link>{" "}
                                 |
-                                <button>
+                                <button
+                                    onClick={() =>
+                                        handleDelete(item.id.toString())
+                                    }
+                                >
                                     <DeleteIcon />
                                 </button>
                             </td>
