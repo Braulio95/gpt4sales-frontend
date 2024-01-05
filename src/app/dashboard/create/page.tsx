@@ -1,37 +1,17 @@
 "use client";
-import getOneBooks from "@/app/lib/getOneBook";
-import updateBook from "@/app/lib/updateBook";
+import createBook from "@/app/lib/createBook";
 import React, { useState, useEffect } from "react";
 
-type Params = {
-    params: {
-        bookId: string;
-    };
-};
-
-export default function BookEditor({ params: { bookId } }: Params) {
+export default function BookCreation() {
     const [formData, setFormData] = useState<IBookBody | null>(null);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const bookData = await getOneBooks(bookId);
-                setFormData(bookData);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchData();
-    }, [bookId]);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         try {
             if (formData) {
-                await updateBook(bookId, formData);
-                console.log("Libro actualizado:", formData);
+                await createBook(formData);
+                console.log("Libro creado:", formData);
             }
         } catch (error) {
             console.error(error);
@@ -56,10 +36,6 @@ export default function BookEditor({ params: { bookId } }: Params) {
         });
     };
 
-    if (!formData) {
-        return <div>Cargando...</div>;
-    }
-
     return (
         <div className="flex items-center justify-center h-screen">
             <form
@@ -72,7 +48,6 @@ export default function BookEditor({ params: { bookId } }: Params) {
                 <input
                     type="text"
                     name="title"
-                    value={formData.title}
                     className="w-full p-2 mb-4 border rounded-md focus:outline-none focus:border-blue-500"
                     onChange={handleChange}
                 />
@@ -83,7 +58,6 @@ export default function BookEditor({ params: { bookId } }: Params) {
                 <input
                     type="text"
                     name="author"
-                    value={formData.author}
                     className="w-full p-2 mb-4 border rounded-md focus:outline-none focus:border-blue-500"
                     onChange={handleChange}
                 />
@@ -94,7 +68,6 @@ export default function BookEditor({ params: { bookId } }: Params) {
                 <input
                     type="text"
                     name="isbn"
-                    value={formData.isbn}
                     className="w-full p-2 mb-4 border rounded-md focus:outline-none focus:border-blue-500"
                     onChange={handleChange}
                 />
@@ -104,7 +77,6 @@ export default function BookEditor({ params: { bookId } }: Params) {
                 </label>
                 <textarea
                     name="sypnosis"
-                    value={formData.sypnosis}
                     className="w-full p-2 mb-4 border rounded-md focus:outline-none focus:border-blue-500"
                     onChange={handleChange}
                 />
@@ -115,7 +87,6 @@ export default function BookEditor({ params: { bookId } }: Params) {
                 <input
                     type="text"
                     name="cover"
-                    value={formData.cover}
                     className="w-full p-2 mb-4 border rounded-md focus:outline-none focus:border-blue-500"
                     onChange={handleChange}
                 />

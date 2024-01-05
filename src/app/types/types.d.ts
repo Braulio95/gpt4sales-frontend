@@ -10,6 +10,15 @@ interface IBook {
     cover: string;
 }
 
+interface IBookBody {
+    title: string;
+    author: string;
+    isbn: string;
+    sypnosis: string;
+    cover: string;
+}
+
+
 interface IPopOverProps {
     book: IBook;
     onClose: MouseEventHandler<HTMLButtonElement>;

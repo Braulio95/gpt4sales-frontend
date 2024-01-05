@@ -5,5 +5,5 @@ export default async function deleteBook(id: string) {
         method: "DELETE",
     });
     if (!response.ok) throw new Error("Error al obtener data");
-    return response.json();
+    return response;
 }

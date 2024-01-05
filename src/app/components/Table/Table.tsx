@@ -1,19 +1,27 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import EditIcon from "../../assets/icons/EditIcon";
 import DeleteIcon from "../../assets/icons/DeleteIcon";
 import "./Table.css";
 import Link from "next/link";
 import deleteBook from "@/app/lib/deleteBook";
+import getAllBooks from "@/app/lib/getAllBooks";
 
 const Table = ({ tableTitle, headers, rows }: ITableProps) => {
+    const [newRows, setNewRows] = useState(rows);
+
     const handleDelete = async (id: string) => {
         try {
             await deleteBook(id);
+            const dataBook: Promise<IBook[]> = getAllBooks();
+            const books = await dataBook;
+            setNewRows(books);
         } catch (error) {
-            console.error("Error al eliminar el libro");
+            console.error(error);
         }
     };
+
+    useEffect;
     return (
         <div>
             <h3>{tableTitle}</h3>
@@ -27,7 +35,7 @@ const Table = ({ tableTitle, headers, rows }: ITableProps) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {rows.map((item, index) => (
+                    {newRows.map((item, index) => (
                         <tr
                             key={index}
                             style={{
