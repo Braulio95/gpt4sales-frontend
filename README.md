@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Bienvenido a la interfaz de usuario 
+![Home con 3 registros](https://tinypic.host/image/6qibf)
 
-## Getting Started
-
-First, run the development server:
+## Getting started 
+Clona el proyecto
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+A continuación arranca el proyecto con el comando:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Nota: asegurate de estar corriendo el servidor al mismo tiempo que la interfaz de usuario**
+## Navegando en la interfaz
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Lo primero que vas a ver es el Homepage vacio ya que aún no tienes registros de libros. El primer paso es ir al dashboard, el cual primero te va a solicitar iniciar sesión. Si ya hiciste todos los pasos de las instrucciones del backend deberías tener tu usuario creado. Inicia sesión con tu **correo y contraseña**
 
-## Learn More
+Si el inicio de sesión es correcto serás redirigido al dashboard que es una tabla donde podras editar tus registros de libros.
 
-To learn more about Next.js, take a look at the following resources:
+Para crear registros te dirigirás al botón verde para crear un libro. Puedes ingresar la siguiente información
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Nombre:  Return of the King
+Autor: JRR Tolkien
+ISBN: 9780618002245
+Sipnosis: Tercera parte de el señor de los anillos
+Portada o cover: https://m.media-amazon.com/images/I/71tDovoHA+L._AC_UF894,1000_QL80_.jpg
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Con esta información puedes agregar los libros que desees. Al agregarlos la tabla se debería actualizar:
+![Registro exitoso](https://tinypic.host/image/6qRPM)
 
-## Deploy on Vercel
+De la misma forma podrias ver el nuevo registro en el HomePage
+![Registro exitoso en el home](https://tinypic.host/image/6qjMk)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Nota
+Es posible que el navegador por el uso de localStorage no actualice las vistas con el cambio de registro. Esto se soluciona activando y desactivando el Caché en las herramientas de desarrollo
