@@ -1,0 +1,20 @@
+button{
+    border: none;
+}
+
+table {
+      border-collapse: collapse;
+      width: 90%;
+      margin: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+thead{
+    background-color: black;
+    color: white;
+}
+
+th, td {
+      padding: 20px;
+      text-align: center;
+    }

@@ -14,3 +14,9 @@ interface IPopOverProps {
     book: IBook;
     onClose: MouseEventHandler<HTMLButtonElement>;
 }
+
+interface ITableProps {
+    tableTitle: string;
+    headers: string[];
+    rows: IBook[];
+}
