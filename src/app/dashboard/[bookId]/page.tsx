@@ -35,6 +35,7 @@ export default function BookEditor({ params: { bookId } }: Params) {
                 if (formData) {
                     await updateBook(bookId, formData, token);
                     console.log("Libro actualizado:", formData);
+                    window.location.replace("/dashboard");
                 }
             } catch (error) {
                 console.error(error);

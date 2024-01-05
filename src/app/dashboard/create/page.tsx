@@ -18,6 +18,7 @@ export default function BookCreation() {
                 if (formData) {
                     await createBook(formData, token);
                     console.log("Libro creado:", formData);
+                    window.location.replace("/dashboard");
                 }
             } catch (error) {
                 console.error(error);
