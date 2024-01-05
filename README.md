@@ -1,5 +1,5 @@
 ## Bienvenido a la interfaz de usuario 
-![Home con 3 registros](https://tinypic.host/image/6qibf)
+(https://tinypic.host/image/6qibf)
 
 ## Getting started 
 Clona el proyecto
@@ -32,7 +32,7 @@ Con esta información puedes agregar los libros que desees. Al agregarlos la tab
 (https://tinypic.host/image/6qRPM)
 
 De la misma forma podrias ver el nuevo registro en el HomePage
-![Registro exitoso en el home](https://tinypic.host/image/6qjMk)
+(https://tinypic.host/image/6qjMk)
 
 ## Nota
 Es posible que el navegador por el uso de localStorage no actualice las vistas con el cambio de registro. Esto se soluciona activando y desactivando el Caché en las herramientas de desarrollo
