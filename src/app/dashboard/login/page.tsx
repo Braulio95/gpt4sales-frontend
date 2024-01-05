@@ -1,6 +1,22 @@
-import React from "react";
+"use client";
+import AuthService from "@/app/lib/authUser";
+import React, { useState } from "react";
 
 export default function login() {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleLogin = async (event: any) => {
+        event.preventDefault();
+        try {
+            const { user, token } = await AuthService.login(username, password);
+            console.log("Usuario autenticado:", user);
+            console.log("Token:", token);
+            localStorage.setItem("token", token);
+        } catch (error) {
+            console.error("Error de autenticación:", error);
+        }
+    };
     return (
         <div className="flex items-center justify-center h-screen">
             <div className="bg-white p-8 shadow-md rounded-md">
@@ -19,6 +35,8 @@ export default function login() {
                             id="username"
                             name="username"
                             placeholder="Ingrese su nombre de usuario"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
                         />
                     </div>
                     <div className="mb-4">
@@ -34,11 +52,13 @@ export default function login() {
                             id="password"
                             name="password"
                             placeholder="Ingrese su contraseña"
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
                     <button
                         className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
                         type="submit"
+                        onClick={handleLogin}
                     >
                         Iniciar Sesión
                     </button>

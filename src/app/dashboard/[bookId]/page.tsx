@@ -1,4 +1,5 @@
 "use client";
+import AuthService from "@/app/lib/authUser";
 import getOneBooks from "@/app/lib/getOneBook";
 import updateBook from "@/app/lib/updateBook";
 import React, { useState, useEffect } from "react";
@@ -11,6 +12,7 @@ type Params = {
 
 export default function BookEditor({ params: { bookId } }: Params) {
     const [formData, setFormData] = useState<IBookBody | null>(null);
+    const token = AuthService.getAuthToken();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,14 +29,15 @@ export default function BookEditor({ params: { bookId } }: Params) {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        try {
-            if (formData) {
-                await updateBook(bookId, formData);
-                console.log("Libro actualizado:", formData);
+        if (token) {
+            try {
+                if (formData) {
+                    await updateBook(bookId, formData, token);
+                    console.log("Libro actualizado:", formData);
+                }
+            } catch (error) {
+                console.error(error);
             }
-        } catch (error) {
-            console.error(error);
         }
     };
 

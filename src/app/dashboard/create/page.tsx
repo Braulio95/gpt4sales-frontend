@@ -1,4 +1,5 @@
 "use client";
+import AuthService from "@/app/lib/authUser";
 import createBook from "@/app/lib/createBook";
 import React, { useState, useEffect } from "react";
 
@@ -7,14 +8,19 @@ export default function BookCreation() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        const token = AuthService.getAuthToken();
 
-        try {
-            if (formData) {
-                await createBook(formData);
-                console.log("Libro creado:", formData);
+        if (token) {
+            // Si no hay un token, redirige a la página de inicio de sesión
+
+            try {
+                if (formData) {
+                    await createBook(formData, token);
+                    console.log("Libro creado:", formData);
+                }
+            } catch (error) {
+                console.error(error);
             }
-        } catch (error) {
-            console.error(error);
         }
     };
 
